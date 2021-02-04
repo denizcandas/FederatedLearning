@@ -39,8 +39,6 @@ def train(network, data, target, fed_sgd=True):
     l_epochs = 1
     if not fed_sgd:
         data = torch.split(data, 64)  # split into 64 part batches if using fed_avg
-        iterations = len(data)
-        print("We got " + str(iterations) + " iterations")
         target = torch.split(target, 64)
         l_epochs = local_epochs
     else:
